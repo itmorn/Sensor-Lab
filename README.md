@@ -177,7 +177,7 @@
     - 少子：自由电子
 
 参考视频
-- [模拟电子技术基础 02-PN结的形成](https://www.bilibili.com/video/BV1Gt411b7Zq/)
+- [模拟电子技术基础 02-PN结的形成](https://www.bilibili.com/video/BV1Gt411b7Zq/?p=2)
 
 ## PN结
 PN结是“Positive-Negative Junction”的简称，指P型与N型半导体结合形成的交界区域。当两者结合时，在交界面处会形成一个具有单向导电性、宽度稳定的空间电荷区（耗尽层），这就是PN结，它是所有半导体器件的核心结构。
@@ -234,7 +234,7 @@ PN结的“平衡”是指 **扩散作用** 和 **漂移作用** 达到动态平
 
 
 参考资料
-- [模拟电子技术基础 02-PN结的形成](https://www.bilibili.com/video/BV1Gt411b7Zq/)
+- [模拟电子技术基础 02-PN结的形成](https://www.bilibili.com/video/BV1Gt411b7Zq/?p=2)
 - [PN结-baike](https://baike.baidu.com/item/PN%E7%BB%93/898090)
 
 
