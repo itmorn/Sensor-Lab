@@ -6,6 +6,7 @@
 - [杂质半导体](#杂质半导体)
 - [PN结](#PN结)
 - [二极管](#二极管)
+- [发光二极管——LED](#发光二极管)
 - [温湿度传感器](#温湿度传感器)
 - [气压传感器](#气压传感器)
 - [光照传感器](#光照传感器)
@@ -314,6 +315,23 @@ PN结的“平衡”是指 **扩散作用** 和 **漂移作用** 达到动态平
 - [3个很简单的电路，让你了解二极管的钳位作用](https://www.bilibili.com/video/BV1Ne4y1V7VR/?vd_source=a0ed88162ba357c3f44aa427ad89574b)
 - [五分钟带你了解 稳压二极管](https://www.bilibili.com/video/BV1qY4y1t7sc/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=a0ed88162ba357c3f44aa427ad89574b)
 
+
+## 发光二极管
+发光二极管，简称LED，是一种能将电能直接转化为光能的半导体器件。其核心原理是电子与空穴在耗尽区附近复合时，以可见光子形式释放能量，从而实现高效发光。
+
+![alt text](img/20260108171631.png)
+
+- 发光原理
+    - ![alt text](img/20260108165803.png)
+    - 当电子从导带落入价带的空穴时，该带隙能量就会以光子形式发射
+    - 材质不同，光色不同：砷化镓（GaAs）发红外光，磷化镓（GaP）发红光/绿光，氮化镓（GaN）发蓝光/紫外光
+    - 普通半导体材质（如硅）发射不可见红外光，能量多以热形式释放
+
+
+
+参考资料
+- [为什么制作蓝LED几乎是不可能的](https://www.bilibili.com/video/BV1wi421f71U/?spm_id_from=333.788.recommend_more_video.9&trackid=web_related_0.router-related-2206419-dk9pw.1767861522260.317&vd_source=a0ed88162ba357c3f44aa427ad89574b)
+- [LED灯发光原理，原来就是利用二极管](https://www.bilibili.com/video/BV1nM411N7CT/?vd_source=a0ed88162ba357c3f44aa427ad89574b)
 
 ## 温湿度传感器
 测量环境温度和湿度的传感器
