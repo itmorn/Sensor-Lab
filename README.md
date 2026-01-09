@@ -7,6 +7,8 @@
 - [PN结](#PN结)
 - [二极管](#二极管)
 - [发光二极管——LED](#发光二极管)
+- [彩色LED](#彩色LED)
+- [彩色LED灯带](#彩色LED灯带)
 - [温湿度传感器](#温湿度传感器)
 - [气压传感器](#气压传感器)
 - [光照传感器](#光照传感器)
@@ -317,7 +319,7 @@ PN结的“平衡”是指 **扩散作用** 和 **漂移作用** 达到动态平
 
 
 ## 发光二极管
-发光二极管，简称LED，是一种能将电能直接转化为光能的半导体器件。其核心原理是电子与空穴在耗尽区附近复合时，以可见光子形式释放能量，从而实现高效发光。
+发光二极管，简称LED，是一种能将电能直接转化为光能的半导体器件。其核心原理是电子与空穴在耗尽区附近复合时（电子和空穴在这里才能大量相遇），以可见光子形式释放能量，从而实现高效发光。
 
 ![alt text](img/20260108171631.png)
 
@@ -327,11 +329,171 @@ PN结的“平衡”是指 **扩散作用** 和 **漂移作用** 达到动态平
     - 材质不同，光色不同：砷化镓（GaAs）发红外光，磷化镓（GaP）发红光/绿光，氮化镓（GaN）发蓝光/紫外光
     - 普通半导体材质（如硅）发射不可见红外光，能量多以热形式释放
 
-
+- 实践
+    - 电路图
+        - ![alt text](img/20260109153526.png)
+    - 仿真
+        - ![alt text](img/20260109154602.png)
+    - 实操
+        - ![alt text](img/20260109154705.png)
 
 参考资料
 - [为什么制作蓝LED几乎是不可能的](https://www.bilibili.com/video/BV1wi421f71U/?spm_id_from=333.788.recommend_more_video.9&trackid=web_related_0.router-related-2206419-dk9pw.1767861522260.317&vd_source=a0ed88162ba357c3f44aa427ad89574b)
 - [LED灯发光原理，原来就是利用二极管](https://www.bilibili.com/video/BV1nM411N7CT/?vd_source=a0ed88162ba357c3f44aa427ad89574b)
+- [面包板电路点亮led灯](https://www.bilibili.com/video/BV1k618BiEAS/?vd_source=a0ed88162ba357c3f44aa427ad89574b)
+
+
+## 彩色LED
+彩色LED是通过红、绿、蓝三原色芯片混合或荧光粉转换，能精准产生全彩光谱的高效发光器件。
+
+- 单色LED
+    - ![alt text](img/20260109155302.png)
+- 彩色LED
+    - ![alt text](img/20260109155639.png)
+    - 上图中是共阳极接法
+    - ![alt text](img/20260109160635.png)
+    - ![alt text](img/20260109161201.png)
+
+- 彩色光
+    - 共阳极接法控制每个通道亮度的核心方法是：对每个通道的阴极（R, G, B引脚）分别进行独立的PWM（脉宽调制）控制。
+    - 可以混合出 256^3 种颜色
+
+
+- 实践
+    - 注意下面是直接由开发版进行供电
+    - 仿真（该元器件是共阴极）
+        - 直接输出电压方式
+            - ![alt text](img/20260109163006.png)
+            ```arduino
+            void setup()
+            {
+            // 设置引脚3(G)、5(B)、6(R)为输出模式
+            pinMode(3, OUTPUT);
+            pinMode(5, OUTPUT);
+            pinMode(6, OUTPUT);
+            }
+
+            void loop()
+            {
+            // 点亮绿色(G) - 引脚3
+            digitalWrite(3, HIGH);
+            // 点亮蓝色(B) - 引脚5  
+            // digitalWrite(5, HIGH);
+            // 点亮红色(R) - 引脚6
+            // digitalWrite(6, HIGH);
+            
+            // 保持点亮状态
+            // 这里没有delay，因为只需要持续点亮
+            }
+            ```
+        - PWM方式
+            - ![alt text](img/20260109164212.png)
+            ```arduino
+            void setup()
+            {
+            // 引脚3、5、6都支持PWM，不需要特别设置
+            // analogWrite会自动配置为PWM输出
+            }
+
+            void loop()
+            {
+            // 使用analogWrite输出PWM信号
+            // 参数范围：0-255，0=完全关闭，255=最亮
+            
+            // 显示白色（红绿蓝都最亮）
+            // analogWrite(3, 255);   // G(绿色)最亮
+            analogWrite(5, 255);   // B(蓝色)最亮
+            analogWrite(6, 255);   // R(红色)最亮
+            }
+            ```
+    - 实操
+        - ![alt text](img/20260109164241.png)
+        
+
+参考资料
+- [LED灯发光原理，原来就是利用二极管](https://www.bilibili.com/video/BV1nM411N7CT/?vd_source=a0ed88162ba357c3f44aa427ad89574b)
+- [RGB全彩LED基本原理及编程实现方法](https://www.bilibili.com/video/BV1MG41147cW/?vd_source=a0ed88162ba357c3f44aa427ad89574b)
+
+
+## 彩色LED灯带
+彩色LED灯带是在柔性基板上密集排布众多全彩LED灯珠，通过独立控制每个灯珠的红、绿、蓝三色亮度，能呈现出丰富色彩和动态效果的线性照明产品。
+
+![alt text](img/20260109165902.png)
+
+- 彩色LED灯珠大量占用PWM通道问题
+    - ![alt text](img/20260109170739.png)
+    - 减少到1个通道即可控制
+
+- 如果灯带上有1000个灯珠呢？
+    - ![alt text](img/20260109171304.png)
+    - 可是我们的开发版没有这么多通道
+
+- 可以考虑穿行控制
+    - ![alt text](img/20260109171532.png)
+    - 也就是我们只用一个通道发出的信号，这个信号里包含着对每一个灯珠的控制，每个灯珠按照顺序去解析自己的指令，然后把剩下的指令再传给后面的灯珠。
+
+- 数字RGB LED
+    - ![alt text](img/20260109171938.png)
+    - ![alt text](img/20260109171945.png)
+    - ![alt text](img/20260109171952.png)
+    - ![alt text](img/20260109172112.png)
+    - ![alt text](img/20260109172145.png)
+    - ![alt text](img/20260109172211.png)
+    - ![alt text](img/20260109172325.png)
+
+- 实践
+    - 仿真
+        - <video controls src="img/20260109_173234.mp4" title="Title"></video>
+        ```arduino
+        #include <Adafruit_NeoPixel.h>
+
+        #define PIN 2	 // input pin Neopixel is attached to
+
+        #define NUMPIXELS      12 // number of neopixels in strip
+
+        Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+        int delayval = 100; // timing delay in milliseconds
+
+        int redColor = 0;
+        int greenColor = 0;
+        int blueColor = 0;
+
+        void setup() {
+        // Initialize the NeoPixel library.
+        pixels.begin();
+        }
+
+        void loop() {
+        setColor();
+
+        for (int i=0; i < NUMPIXELS; i++) {
+            // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
+            pixels.setPixelColor(i, pixels.Color(redColor, greenColor, blueColor));
+
+            // This sends the updated pixel color to the hardware.
+            pixels.show();
+
+            // Delay for a period of time (in milliseconds).
+            delay(delayval);
+        }
+        }
+
+        // setColor()
+        // picks random values to set for RGB
+        void setColor(){
+        redColor = random(0, 255);
+        greenColor = random(0,255);
+        blueColor = random(0, 255);
+        }
+        ```
+        
+
+参考资料
+- [零基础入门学用 Arduino 教程 - 智能应用篇 19-26 WS2812LED智能灯带及FastLED库应用](https://www.bilibili.com/video/BV1DW411u7om?spm_id_from=333.788.videopod.episodes&vd_source=a0ed88162ba357c3f44aa427ad89574b)
+- [颠覆认知！WS2812彻底改变了灯光玩法！一根线如何操控千颗LED？](https://www.bilibili.com/video/BV1c9fhY5EPk/?vd_source=a0ed88162ba357c3f44aa427ad89574b)
+
+
 
 ## 温湿度传感器
 测量环境温度和湿度的传感器
