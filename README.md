@@ -443,9 +443,8 @@ PN结的“平衡”是指 **扩散作用** 和 **漂移作用** 达到动态平
 
 - 实践
     - 仿真
-        - ![alt text](img/20260109_173234.mp4)
+        - ![](img/20260109_173234.mp4)
         
-        - <video controls src="img/20260109_173234.mp4" title="Title"></video>
         ```arduino
         #include <Adafruit_NeoPixel.h>
 
