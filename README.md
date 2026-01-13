@@ -310,6 +310,13 @@ PN结的“平衡”是指 **扩散作用** 和 **漂移作用** 达到动态平
         - ![alt text](img/20260108160719.png)
         - ![alt text](img/20260108160750.png)
 
+- 实操
+    - 二极管单向导通
+        - ![alt text](img/20260113154100.png)
+    - 稳压二极管
+        - ![alt text](img/20260113154816.gif)
+        - 电源电压即使变得很大，二极管两段压降维持在5V。通过控制半导体的掺杂浓度和制造工艺，可以制成具有不同反向击穿电压（稳压值）的二极管。
+
 参考资料
 - [模拟电子技术基础 03-PN结与二极管的特性](https://www.bilibili.com/video/BV1Gt411b7Zq?vd_source=a0ed88162ba357c3f44aa427ad89574b&spm_id_from=333.788.player.switch&p=3)
 - [模拟电子技术基础 04-二极管的直流等效电路](https://www.bilibili.com/video/BV1Gt411b7Zq?vd_source=a0ed88162ba357c3f44aa427ad89574b&spm_id_from=333.788.videopod.episodes&p=4)
@@ -619,6 +626,35 @@ PN结的“平衡”是指 **扩散作用** 和 **漂移作用** 达到动态平
 - [【物理实验】探究平行板电容器电容的影响因素](https://www.bilibili.com/video/BV1zV411j7KG/?vd_source=a0ed88162ba357c3f44aa427ad89574b)
 - [71-电解电容为什么分正负极？反接会有什么后果？热了赶紧换](https://www.bilibili.com/video/BV1Yy4y1G7yF/?vd_source=a0ed88162ba357c3f44aa427ad89574b)
 
+
+
+## 电感器
+电感器是一种利用通电导体周围产生磁场来储存磁场能量、并对电流变化产生阻碍作用的元件，具有“通直流、阻交流”的特性。
+
+![alt text](img/20260113195458.png)
+
+- 原理
+    - 根据安培定律，当导体中有电流通过时，导体周围会产生磁场；线圈中的电流越大，产生的磁场越强。
+        - ![alt text](img/20260113195506.png)
+    - 当电流发生变化时，线圈中的磁通量随之变化，根据法拉第电磁感应定律，线圈中会产生感应电动势（自感现象）。
+        - ![alt text](img/20260113195514.png)
+    - 该感应电动势的方向总是阻碍原电流变化（楞次定律），从而表现为对电流变化的阻碍作用。
+    - 电感器正是利用这种磁场储能和电磁感应效应来工作，其储存的能量以磁场能的形式存在。
+
+- 简单电路
+    - ![alt text](img/20260113195519.png)
+        - 刚接通电流无法通过电感
+    - ![alt text](img/20260113195527.png)
+        - 电感磁通量不在变化，通直流
+    - ![alt text](img/20260113195534.png)
+        - 断开电路，电流发生瞬间变化，磁通量继续变化，产生电动势给灯泡供电。
+
+- 实操
+    - ![alt text](img/20260113_195219.gif)
+
+参考资料
+- [学校三年没整明白的电感器原理，其实就这么简单！](https://www.bilibili.com/video/BV1evJaz7EsK/?spm_id_from=333.337.search-card.all.click&vd_source=a0ed88162ba357c3f44aa427ad89574b)
+- [电感在电路中起什么作用的，它的工作原理是什么？](https://www.bilibili.com/video/BV1DJrvBDEE8/?spm_id_from=333.337.search-card.all.click&vd_source=a0ed88162ba357c3f44aa427ad89574b)
 
 
 ## 温湿度传感器
